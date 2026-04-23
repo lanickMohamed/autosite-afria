@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AfrIAgenesis® | Mémoire · Justice · Puissance</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0a 70%);
+        }
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .tagline {
+            font-size: 1.5rem;
+            color: #aaa;
+            margin-bottom: 2rem;
+            letter-spacing: 0.2em;
+        }
+        .pillars {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+        .pillar {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            padding: 2rem;
+            min-width: 200px;
+            backdrop-filter: blur(10px);
+        }
+        .pillar-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .pillar-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .pillar-desc { color: #888; font-size: 0.9rem; }
+        .cta {
+            margin-top: 2rem;
+        }
+        .cta-button {
+            background: linear-gradient(90deg, #ff6b6b, #feca57);
+            color: #000;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .cta-button:hover { transform: scale(1.05); }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #555;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="logo">🌍</div>
+        <h1>AfrIAgenesis®</h1>
+        <p class="tagline">Mémoire · Justice · Puissance</p>
+        <p style="max-width: 600px; color: #ccc; margin-bottom: 2rem;">
+            Intelligence Artificielle Souveraine Africaine.
+            <br>Construire l'avenir avec nos propres outils.
+        </p>
+        <div class="pillars">
+            <div class="pillar">
+                <div class="pillar-icon">🧠</div>
+                <div class="pillar-title">Mémoire</div>
+                <div class="pillar-desc">Souveraineté des données africaines</div>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">⚖️</div>
+                <div class="pillar-title">Justice</div>
+                <div class="pillar-desc">Technologie pour tous</div>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">💪</div>
+                <div class="pillar-title">Puissance</div>
+                <div class="pillar-desc">Innovation locale</div>
+            </div>
+        </div>
+        <div class="cta">
+            <a href="#contact" class="cta-button">Rejoindre le mouvement</a>
+        </div>
+    </div>
+    <div class="footer">
+        <p>© 2026 AfrIAgenesis® — Intelligence Artificielle Souveraine Africaine</p>
+    </div>
+</body>
+</html>
