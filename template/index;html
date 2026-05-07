@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AutoSite™ — Sites Vitrine IA pour Entrepreneurs Africains</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dark: #8B6914;
+  --noir: #0A0A0A;
+  --noir-2: #111111;
+  --noir-3: #1A1A1A;
+  --blanc: #F5F0E8;
+  --gris: #888;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--noir);
+  color: var(--blanc);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1A1A1A;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 2rem;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.nav-logo-svg {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.nav-brand-main {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.nav-brand-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+.nav-cta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--noir);
+  background: var(--gold);
+  padding: 0.5rem 1.2rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.nav-cta:hover { background: var(--gold-light); }
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 5rem 2rem 2rem;
+  position: relative;
+  background: radial-gradient(ellipse at 50% 0%, #2A1F00 0%, var(--noir) 60%);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(201,168,76,0.03) 60px, rgba(201,168,76,0.03) 61px);
+  pointer-events: none;
+}
+
+.badge {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold-dark);
+  padding: 0.4rem 1.2rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+  animation: fadeIn 0.8s ease both;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 1.0;
+  margin-bottom: 0.3rem;
+  animation: slideUp 0.9s ease both 0.1s;
+}
+
+.hero h1 span {
+  color: var(--gold);
+  display: block;
+}
+
+.hero .sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin: 1.5rem 0 2.5rem;
+  animation: slideUp 0.9s ease both 0.2s;
+}
+
+.price-pill {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: var(--noir);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 0.8rem 2rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  animation: slideUp 0.9s ease both 0.3s;
+}
+
+.price-note {
+  font-size: 0.8rem;
+  color: var(--gris);
+  letter-spacing: 0.1em;
+  margin-bottom: 2.5rem;
+  animation: fadeIn 1s ease both 0.4s;
+}
+
+.cta-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: slideUp 0.9s ease both 0.4s;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--noir);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  border: 1px solid var(--gold-dark);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.05);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s ease infinite;
+  color: var(--gold-dark);
+  font-size: 1.5rem;
+}
+
+/* STATS BAR */
+.stats-bar {
+  background: var(--noir-3);
+  border-top: 1px solid #222;
+  border-bottom: 1px solid #222;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1.5rem 2rem;
+  gap: 0;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0.5rem 2rem;
+  border-right: 1px solid #2A2A2A;
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold);
+  display: block;
+}
+
+.stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gris);
+}
+
+/* SECTION */
+section {
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.section-title em {
+  color: var(--gold);
+  font-style: normal;
+}
+
+/* COMMENT CA MARCHE */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.step {
+  border-top: 2px solid var(--gold-dark);
+  padding-top: 1.5rem;
+  position: relative;
+}
+
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #222;
+  position: absolute;
+  top: -0.5rem;
+  right: 0;
+  line-height: 1;
+}
+
+.step h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.step p {
+  font-size: 0.9rem;
+  color: var(--gris);
+  line-height: 1.6;
+}
+
+/* WHAT YOU GET */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.feature {
+  background: var(--noir-3);
+  border: 1px solid #1F1F1F;
+  padding: 1.5rem;
+  transition: border-color 0.2s;
+}
+
+.feature:hover { border-color: var(--gold-dark); }
+
+.feature-icon {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.feature p {
+  font-size: 0.8rem;
+  color: var(--gris);
+  line-height: 1.5;
+}
+
+/* ORDRE SECTION */
+.order-section {
+  background: var(--noir-2);
+  border-top: 1px solid #1A1A1A;
+  border-bottom: 1px solid #1A1A1A;
+  padding: 5rem 2rem;
+}
+
+.order-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.order-form {
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group.full { grid-column: 1 / -1; }
+
+label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+input, select, textarea {
+  background: var(--noir-3);
+  border: 1px solid #2A2A2A;
+  color: var(--blanc);
+  padding: 0.8rem 1rem;
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--gold-dark);
+}
+
+select option { background: var(--noir-3); }
+
+textarea { resize: vertical; min-height: 80px; }
+
+.form-submit {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.wa-note {
+  font-size: 0.8rem;
+  color: var(--gris);
+  flex: 1;
+  min-width: 200px;
+}
+
+/* FOOTER */
+footer {
+  background: var(--noir);
+  border-top: 1px solid #111;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.footer-links a {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gris);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.footer-copy {
+  font-size: 0.75rem;
+  color: #333;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+@keyframes slideUp {
+  from { opacity:0; transform: translateY(20px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .stat-item { padding: 0.5rem 1rem; }
+  .price-pill { font-size: 1.1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="#" class="nav-logo">
+    <!-- Logo réel : remplace src par le chemin GitHub quand uploadé -->
+    <img src="logo_final_afriagenesis_V1.jpeg" alt="afrIAgenesis®"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+    <!-- SVG fallback médaillon or/cuivre -->
+    <svg class="nav-logo-svg" style="display:none;" viewBox="0 0 36 36">
+      <defs>
+        <radialGradient id="medal" cx="50%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#E8C97A"/>
+          <stop offset="50%" stop-color="#C9A84C"/>
+          <stop offset="100%" stop-color="#6B4F10"/>
+        </radialGradient>
+      </defs>
+      <circle cx="18" cy="18" r="17" fill="url(#medal)" stroke="#8B6914" stroke-width="1"/>
+      <circle cx="18" cy="18" r="13" fill="none" stroke="#0A0A0A" stroke-width="0.5" opacity="0.3"/>
+      <text x="18" y="14" text-anchor="middle" font-family="serif" font-size="7" font-weight="bold" fill="#0A0A0A">afrIA</text>
+      <text x="18" y="22" text-anchor="middle" font-family="serif" font-size="5" fill="#0A0A0A">genesis</text>
+      <text x="18" y="28" text-anchor="middle" font-family="serif" font-size="6" fill="#0A0A0A">®</text>
+    </svg>
+    <div class="nav-brand">
+      <span class="nav-brand-main">afrIAgenesis®</span>
+      <span class="nav-brand-sub">AutoSite™</span>
+    </div>
+  </a>
+  <a href="#commander" class="nav-cta">Commander</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">afrIAgenesis® — Infrastructure IA Africaine</div>
+
+  <h1>
+    Votre Site Vitrine
+    <span>En 48 Heures.</span>
+  </h1>
+
+  <p class="sub">Généré par Intelligence Artificielle · Livré Clés en Main · 100% Africain</p>
+
+  <div class="price-pill">25 000 FCFA / 450 000 GNF</div>
+  <p class="price-note">Paiement unique · Site généré en 3 minutes · Domaine inclus 1 an</p>
+
+  <div class="cta-group">
+    <a href="#commander" class="btn-primary">Commander Maintenant</a>
+    <a href="#comment" class="btn-outline">Comment ça marche</a>
+  </div>
+
+  <p style="margin-top: 1.5rem; font-size: 0.8rem; color: var(--gris); animation: fadeIn 1s ease both 0.6s;">
+    🛡️ Garantie <strong style="color: var(--blanc);">Satisfait ou Remboursé 30 jours</strong> · Généré en <strong style="color: var(--blanc);">3 minutes</strong> · Paiement sécurisé
+  </p>
+
+  <div class="scroll-hint">↓</div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">3 min</span>
+    <span class="stat-label">Génération IA</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">5+</span>
+    <span class="stat-label">Pays Couverts</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">Adapté Afrique</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">IA</span>
+    <span class="stat-label">Génération Automatique</span>
+  </div>
+</div>
+
+<!-- COMMENT CA MARCHE -->
+<section id="comment">
+  <p class="section-label reveal">Processus</p>
+  <h2 class="section-title reveal">Simple. Rapide. <em>Professionnel.</em></h2>
+
+  <div class="steps">
+    <div class="step reveal">
+      <span class="step-num">01</span>
+      <h3>Vous Commandez</h3>
+      <p>Remplissez le formulaire ci-dessous. Nom de votre business, secteur, ville, couleurs préférées.</p>
+    </div>
+    <div class="step reveal">
+      <span class="step-num">02</span>
+      <h3>On Génère</h3>
+      <p>Notre IA crée votre site vitrine personnalisé : textes, design, sections adaptés à votre activité.</p>
+    </div>
+    <div class="step reveal">
+      <span class="step-num">03</span>
+      <h3>Vous Validez</h3>
+      <p>Vous recevez un aperçu. Vous demandez des modifications si nécessaire. Zéro stress.</p>
+    </div>
+    <div class="step reveal">
+      <span class="step-num">04</span>
+      <h3>Mise en Ligne</h3>
+      <p>Votre site est en ligne avec votre domaine personnalisé. Généré en <strong>3 minutes</strong> par l'IA.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CE QUE VOUS OBTENEZ -->
+<section id="produit" style="background: var(--noir-2); max-width:100%; padding: 5rem 2rem;">
+  <div style="max-width:1100px; margin:0 auto;">
+    <p class="section-label reveal">Inclus dans votre site</p>
+    <h2 class="section-title reveal">Tout ce dont votre <em>business a besoin</em></h2>
+
+    <div class="features">
+      <div class="feature reveal">
+        <div class="feature-icon">🌐</div>
+        <h4>Domaine Personnalisé</h4>
+        <p>votrebusiness.com ou .africa inclus pour 1 an</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">📱</div>
+        <h4>100% Mobile</h4>
+        <p>Parfait sur téléphone — là où sont vos clients</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">💬</div>
+        <h4>Bouton WhatsApp</h4>
+        <p>Vos clients vous contactent directement</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">🎨</div>
+        <h4>Design Personnalisé</h4>
+        <p>Couleurs, logo, photos adaptés à votre secteur</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">📊</div>
+        <h4>Sections Complètes</h4>
+        <p>Accueil, Services, À propos, Contact, Témoignages</p>
+      </div>
+      <div class="feature reveal">
+        <div class="feature-icon">⚡</div>
+        <h4>Ultra Rapide</h4>
+        <p>Chargement optimisé, même sur réseau 3G</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMANDER -->
+<div class="order-section" id="commander">
+  <div class="order-inner">
+    <p class="section-label reveal">Commande</p>
+    <h2 class="section-title reveal">Lancez votre site <em>aujourd'hui</em></h2>
+    <p style="color: var(--gris); margin-top:1rem;" class="reveal">
+      Remplissez ce formulaire. Nous vous contactons sur WhatsApp dans les 2 heures.
+    </p>
+
+    <div class="order-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Votre Nom *</label>
+          <input type="text" id="nom" placeholder="Ex: Mamadou Diallo" required>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp *</label>
+          <input type="tel" id="tel" placeholder="+224 XXX XXX XXX" required>
+        </div>
+        <div class="form-group">
+          <label>Nom de votre Business *</label>
+          <input type="text" id="business" placeholder="Ex: Restaurant Chez Marie" required>
+        </div>
+        <div class="form-group">
+          <label>Secteur d'activité *</label>
+          <select id="secteur">
+            <option value="">Choisir...</option>
+            <option>Restaurant / Alimentation</option>
+            <option>Commerce / Boutique</option>
+            <option>Services / Consulting</option>
+            <option>Santé / Pharmacie</option>
+            <option>BTP / Construction</option>
+            <option>Mode / Beauté</option>
+            <option>Transport / Logistique</option>
+            <option>Éducation / Formation</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ville</label>
+          <input type="text" id="ville" placeholder="Ex: Conakry, Cotonou, Dakar">
+        </div>
+        <div class="form-group">
+          <label>Pays</label>
+          <select id="pays">
+            <option value="">Choisir...</option>
+            <option>Bénin</option>
+            <option>Guinée</option>
+            <option>Sénégal</option>
+            <option>Côte d'Ivoire</option>
+            <option>Mali</option>
+            <option>Burkina Faso</option>
+            <option>Togo</option>
+            <option>Nigeria</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Description de votre activité</label>
+          <textarea id="description" placeholder="Décrivez ce que vous faites, vos services principaux, ce qui vous différencie..."></textarea>
+        </div>
+      </div>
+
+      <div class="form-submit">
+        <button class="btn-primary" onclick="commander()">
+          Envoyer ma Commande via WhatsApp
+        </button>
+        <p class="wa-note">✓ Réponse garantie sous 2h · ✓ Paiement à la livraison possible · ✓ Satisfaction garantie</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GARANTIE -->
+<section style="background: var(--noir); padding: 5rem 2rem; border-top: 1px solid #111;">
+  <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+    <div style="border: 1px solid var(--gold-dark); padding: 3rem 2rem; position: relative;">
+      <div style="
+        position: absolute; top: -1.2rem; left: 50%; transform: translateX(-50%);
+        background: var(--gold); color: var(--noir);
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 0.7rem; font-weight: 700; letter-spacing: 0.3em;
+        text-transform: uppercase; padding: 0.4rem 1.5rem;
+        white-space: nowrap;
+      ">Notre Engagement</div>
+
+      <div style="font-size: 4rem; margin-bottom: 1rem;">🛡️</div>
+
+      <h2 style="
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.6rem, 4vw, 2.5rem);
+        font-weight: 700; margin-bottom: 1rem;
+      ">Satisfait ou <span style="color: var(--gold);">Remboursé</span></h2>
+
+      <p style="
+        font-family: 'Barlow Condensed', sans-serif;
+        font-size: 1.1rem; letter-spacing: 0.05em;
+        color: var(--gold); margin-bottom: 1.5rem;
+      ">Garantie 30 jours — Sans condition — Sans question</p>
+
+      <p style="color: var(--gris); line-height: 1.8; max-width: 550px; margin: 0 auto 2rem; font-size: 0.95rem;">
+        Si votre site ne vous convient pas dans les <strong style="color: var(--blanc);">30 jours</strong> suivant la livraison,
+        nous vous remboursons intégralement. Pas de formulaire compliqué.
+        Un message WhatsApp suffit.
+      </p>
+
+      <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
+        <div style="text-align: center;">
+          <div style="color: var(--gold); font-size: 1.5rem; margin-bottom: 0.3rem;">✓</div>
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris);">Remboursement Intégral</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="color: var(--gold); font-size: 1.5rem; margin-bottom: 0.3rem;">✓</div>
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris);">Sans Justification</div>
+        </div>
+        <div style="text-align: center;">
+          <div style="color: var(--gold); font-size: 1.5rem; margin-bottom: 0.3rem;">✓</div>
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gris);">Via WhatsApp</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">afrIAgenesis® × AutoSite™</div>
+  <div class="footer-links">
+    <a href="#comment">Comment ça marche</a>
+    <a href="#produit">Ce qui est inclus</a>
+    <a href="#commander">Commander</a>
+    <a href="mailto:lanickconsult@gmail.com" target="_blank">Contact</a>
+  </div>
+  <p class="footer-copy">© 2026 afrIAgenesis® · CEA Consulting SAS · Cotonou, Bénin · Infrastructure IA Souveraine Africaine</p>
+</footer>
+
+<script>
+// Scroll reveal
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(function(el) {
+  obs.observe(el);
+});
+
+// Commande WhatsApp
+function commander() {
+  var nom = document.getElementById('nom').value.trim();
+  var tel = document.getElementById('tel').value.trim();
+  var business = document.getElementById('business').value.trim();
+  var secteur = document.getElementById('secteur').value;
+  var ville = document.getElementById('ville').value.trim();
+  var pays = document.getElementById('pays').value;
+  var desc = document.getElementById('description').value.trim();
+
+  if (!nom || !tel || !business) {
+    alert('Veuillez remplir votre nom, WhatsApp et le nom de votre business.');
+    return;
+  }
+
+  var msg = '🌟 *COMMANDE AUTOSITE™*\n\n';
+  msg += '👤 *Nom:* ' + nom + '\n';
+  msg += '📱 *WhatsApp:* ' + tel + '\n';
+  msg += '🏢 *Business:* ' + business + '\n';
+  if (secteur) msg += '📂 *Secteur:* ' + secteur + '\n';
+  if (ville) msg += '📍 *Ville:* ' + ville + '\n';
+  if (pays) msg += '🌍 *Pays:* ' + pays + '\n';
+  if (desc) msg += '📝 *Description:* ' + desc + '\n';
+  msg += '\n💰 *Montant:* 25 000 FCFA / 450 000 GNF\n';
+  msg += '⏱️ *Génération IA:* 3 minutes';
+
+  var encoded = encodeURIComponent(msg);
+  var waNum = '224611406262';
+  window.open('https://wa.me/' + waNum + '?text=' + encoded, '_blank');
+}
+</script>
+</body>
+</html>
